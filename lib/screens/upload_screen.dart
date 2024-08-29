@@ -19,9 +19,14 @@ class UploadScreen extends StatefulWidget {
 }
 
 class _UploadScreenState extends State<UploadScreen> {
-  List<List<dynamic>> _data = [];
-
   String? filePath;
+
+  @override
+  void initState() {
+    // final uploadProvider = context.read<UploadProvider>();
+    // uploadProvider.isLoading = false;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +69,10 @@ class _UploadScreenState extends State<UploadScreen> {
       }
     } catch (e) {
       print('Error: $e');
+      final snackBar = SnackBar(
+        content: Text('$e'),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 }

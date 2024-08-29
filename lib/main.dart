@@ -2,6 +2,7 @@ import 'package:inventory_offline_app/providers/inventory_provider.dart';
 import 'package:inventory_offline_app/providers/upload_provider.dart';
 import 'package:inventory_offline_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:inventory_offline_app/screens/inventory_screen.dart';
 import 'package:inventory_offline_app/screens/item_list_screen.dart';
 import 'package:inventory_offline_app/screens/upload_screen.dart';
 import 'package:provider/provider.dart';
@@ -46,11 +47,12 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: UploadScreen.routeName,
+      initialRoute: HomeScreen.routeName,
       routes: {
         HomeScreen.routeName: (context) => const HomeScreen(),
         UploadScreen.routeName: (context) => UploadScreen(),
         ItemListScreen.routeName: (context) => ItemListScreen(),
+        InventoryScreen.routeName: (context) => const InventoryScreen(),
       },
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:inventory_offline_app/providers/upload_provider.dart';
+import 'package:inventory_offline_app/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
 class ItemListScreen extends StatelessWidget {
@@ -25,6 +26,7 @@ class ItemListScreen extends StatelessWidget {
                 content: Text('Todo OK!!!'),
               );
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              Navigator.pushNamed(context, HomeScreen.routeName);
             },
             icon: const Icon(
               Icons.check_circle_outline,
