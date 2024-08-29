@@ -28,17 +28,28 @@ class UploadProvider extends ChangeNotifier {
     for (var table in excel.tables.keys) {
       for (var row in excel.tables[table]?.rows ?? []) {
         List<dynamic> rowData = [];
+
         for (var cell in row) {
-          final value = cell!.value;
-          if (cell.rowIndex >= 1 &&
-              cell.columnIndex <= UploadScreen.MAXCOLUMNUMBER) {
-            rowData.add(value ?? '');
-          }
+          final value = cell.value; // Obtiene el valor de la celda
+          rowData.add(value); // Agrega el valor a la lista de la fila
         }
-        if (rowData.isNotEmpty) excelData.add(rowData);
+
+        // Verifica si el código de barras ya existe en la lista
+        String? barcode = rowData.length > 1
+            ? rowData[1].toString()
+            : null; // El código de barras está en la segunda celda (índice 1)
+        // print(barcode);
+        bool exists = excelData.any((element) =>
+            element.length > 1 && element[1].toString() == barcode);
+
+        if (!exists && barcode != null) {
+          excelData.add(
+              rowData); // Agrega la fila completa a la lista principal si no existe
+        }
       }
     }
     isLoading = false;
     excelDataList = excelData;
+    // print(excelDataList.length);
   }
 }

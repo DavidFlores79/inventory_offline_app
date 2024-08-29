@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(10)),
                   disabledColor: Colors.grey[500],
                   elevation: 5,
-                  color: Colors.blue,
+                  color: Colors.purple,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
                   child: const Text(
@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(10)),
                   disabledColor: Colors.grey[500],
                   elevation: 5,
-                  color: Colors.blue,
+                  color: Colors.purple,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
                   child: const Text(

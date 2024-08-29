@@ -89,11 +89,11 @@ class Message extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(color: Colors.blue[400]),
+      decoration: BoxDecoration(color: Colors.purple[400]),
       child: RichText(
         text: TextSpan(
           text:
-              'Verifica la lista de artículos cargados. Si la lista es correcta puedes presionar ☑ o puedes ',
+              'Verifica la lista de ${uploadProvider.excelDataList.length} artículos cargados. Si la lista es correcta puedes presionar ☑ o puedes ',
           style: const TextStyle(
             fontSize: 16,
             color: Colors.white,
