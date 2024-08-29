@@ -66,6 +66,8 @@ class _UploadScreenState extends State<UploadScreen> {
       if (pickedFile != null) {
         await uploadProvider.processXLSFile(pickedFile);
         Navigator.pushNamed(context, ItemListScreen.routeName);
+      } else {
+        uploadProvider.isLoading = false;
       }
     } catch (e) {
       print('Error: $e');

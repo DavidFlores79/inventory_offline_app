@@ -38,6 +38,7 @@ class UploadProvider extends ChangeNotifier {
         if (rowData.isNotEmpty) excelData.add(rowData);
       }
     }
+    isLoading = false;
     excelDataList = excelData;
   }
 }
