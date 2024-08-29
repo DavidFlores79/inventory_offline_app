@@ -1,6 +1,8 @@
 import 'package:inventory_offline_app/providers/inventory_provider.dart';
+import 'package:inventory_offline_app/providers/upload_provider.dart';
 import 'package:inventory_offline_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:inventory_offline_app/screens/item_list_screen.dart';
 import 'package:inventory_offline_app/screens/upload_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +20,9 @@ class AppState extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<InventoryProvider>(
           create: (context) => InventoryProvider(),
+        ),
+        ChangeNotifierProvider<UploadProvider>(
+          create: (context) => UploadProvider(),
         ),
       ],
       child: const MyApp(),
@@ -45,6 +50,7 @@ class MyApp extends StatelessWidget {
       routes: {
         HomeScreen.routeName: (context) => const HomeScreen(),
         UploadScreen.routeName: (context) => UploadScreen(),
+        ItemListScreen.routeName: (context) => ItemListScreen(),
       },
     );
   }
