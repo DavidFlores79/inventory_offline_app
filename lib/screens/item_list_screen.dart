@@ -18,6 +18,20 @@ class ItemListScreen extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              const snackBar = SnackBar(
+                content: Text('Todo OK!!!'),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            },
+            icon: const Icon(
+              Icons.check_circle_outline,
+              color: Colors.white,
+            ),
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -77,7 +91,7 @@ class Message extends StatelessWidget {
       child: RichText(
         text: TextSpan(
           text:
-              'Verifica la lista de artículos cargados. Si la lista es correcta puedes presionar OK o puedes ',
+              'Verifica la lista de artículos cargados. Si la lista es correcta puedes presionar ☑ o puedes ',
           style: const TextStyle(
             fontSize: 16,
             color: Colors.white,
@@ -95,12 +109,13 @@ class Message extends StatelessWidget {
               ),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  uploadProvider.excelDataList = [];
+                  // uploadProvider.excelDataList = [];
+                  uploadProvider.isLoading = false;
                   Navigator.pop(context);
                 },
             ),
             const TextSpan(
-              text: ' o volver a la pantalla anterior.',
+              text: ' y volver a la pantalla anterior.',
             ),
           ],
         ),
