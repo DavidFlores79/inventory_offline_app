@@ -35,22 +35,43 @@ class ItemListScreen extends StatelessWidget {
           )
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Message(),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: DataTable(
-                  columns: _buildColumns(excelDataList),
-                  rows: _buildRows(excelDataList),
+      body: ListView.builder(
+        itemCount: excelDataList.length,
+        itemBuilder: (context, index) {
+          final row = excelDataList[index];
+          return ListTile(
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Código:',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text('${row[1]}')
+                  ],
                 ),
-              ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('${row[0]}'),
+                    Text(
+                      '${row[3]}',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                Text('${row[2]}'),
+              ],
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
