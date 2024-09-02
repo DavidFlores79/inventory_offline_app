@@ -67,6 +67,7 @@ class _UploadScreenState extends State<UploadScreen> {
       }
       uploadProvider.isLoading = false;
     } catch (e) {
+      uploadProvider.isLoading = false;
       print('Error: $e');
       final snackBar = SnackBar(
         content: Text('$e'),
@@ -89,6 +90,7 @@ processXLSFile(pickedFile) {
       for (var cell in row) {
         final value = cell.value; // Obtiene el valor de la celda
         rowData.add(value); // Agrega el valor a la lista de la fila
+        debugPrint('$rowData');
       }
 
       // Verifica si el código de barras ya existe en la lista
@@ -105,6 +107,17 @@ processXLSFile(pickedFile) {
       }
     }
   }
-  debugPrint(excelData.length.toString());
+
+  // validaciones para columnas
+  if (excelData[0][0].toString() != 'articulo' ||
+      excelData[0][1].toString() != 'codigo de barra' ||
+      excelData[0][2].toString() != 'descripcion') {
+    debugPrint('${excelData[0][0]}');
+    // excelData = [];
+    throw Exception(
+        'No coinciden las columnas ${excelData[0][0]} | ${excelData[0][1]} | ${excelData[0][2]}');
+  }
+
+  // debugPrint(excelData.length.toString());
   return excelData;
 }

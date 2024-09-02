@@ -39,35 +39,42 @@ class ItemListScreen extends StatelessWidget {
         itemCount: excelDataList.length,
         itemBuilder: (context, index) {
           final row = excelDataList[index];
+
           return ListTile(
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                ItemFormat(text: '${row[2]}'),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'Código:',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text('${row[1]}')
+                    ItemFormat(text: '${excelDataList[0][1]}', isBold: true),
+                    ItemFormat(text: '${row[1]}')
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('${row[0]}'),
-                    Text(
-                      '${row[3]}',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ItemFormat(
+                            text: '${excelDataList[0][0]}', isBold: true),
+                        const SizedBox(width: 5),
+                        ItemFormat(text: '${row[0]}'),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ItemFormat(
+                            text: '${excelDataList[0][3]}', isBold: true),
+                        const SizedBox(width: 5),
+                        ItemFormat(text: '${row[3]}'),
+                      ],
                     ),
                   ],
                 ),
-                Text('${row[2]}'),
               ],
             ),
           );
@@ -75,29 +82,24 @@ class ItemListScreen extends StatelessWidget {
       ),
     );
   }
+}
 
-  List<DataColumn> _buildColumns(excelDataList) {
-    if (excelDataList.isNotEmpty) {
-      // Suponiendo que la primera fila contiene los títulos
-      return excelDataList[0]
-          .map<DataColumn>(
-              (cellValue) => DataColumn(label: Text(cellValue.toString())))
-          .toList();
-    }
-    return [];
-  }
+class ItemFormat extends StatelessWidget {
+  final String text;
+  final bool isBold;
+  const ItemFormat({super.key, required this.text, this.isBold = false});
 
-  List<DataRow> _buildRows(excelDataList) {
-    if (excelDataList.isNotEmpty) {
-      return excelDataList.skip(1).map<DataRow>((row) {
-        return DataRow(
-          cells: row.map<DataCell>((cellValue) {
-            return DataCell(Text(cellValue.toString()));
-          }).toList(),
-        );
-      }).toList();
-    }
-    return [];
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text.toUpperCase(),
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: TextStyle(
+        fontWeight: (isBold) ? FontWeight.bold : FontWeight.normal,
+        fontSize: 14,
+      ),
+    );
   }
 }
 
