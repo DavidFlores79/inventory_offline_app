@@ -3,6 +3,20 @@
         android:label="inventory_offline_app"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
+        
+        
+        
+          <receiver
+        android:name="com.codingdevs.thermal_printer.usb.UsbReceiver"
+        android:exported="false">
+
+        <intent-filter>
+            <action android:name="android.hardware.usb.action.ACTION_USB_PERMISSION" />
+            <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            
+        </intent-filter>
+    </receiver>
+        
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -4,6 +4,7 @@ import 'package:inventory_offline_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:inventory_offline_app/screens/inventory_screen.dart';
 import 'package:inventory_offline_app/screens/item_list_screen.dart';
+import 'package:inventory_offline_app/screens/printers_screen.dart';
 import 'package:inventory_offline_app/screens/upload_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
         UploadScreen.routeName: (context) => UploadScreen(),
         ItemListScreen.routeName: (context) => ItemListScreen(),
         InventoryScreen.routeName: (context) => const InventoryScreen(),
+        PrinterScreen.routeName: (context) => const PrinterScreen(),
       },
     );
   }

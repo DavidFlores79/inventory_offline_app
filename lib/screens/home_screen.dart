@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:inventory_offline_app/models/item_capture.model.dart';
 import 'package:inventory_offline_app/providers/inventory_provider.dart';
 import 'package:inventory_offline_app/screens/inventory_screen.dart';
+import 'package:inventory_offline_app/screens/printers_screen.dart';
 import 'package:inventory_offline_app/screens/upload_screen.dart';
 import 'package:inventory_offline_app/ui/input_decorations_rounded.dart';
 import 'package:flutter/material.dart';
@@ -66,6 +67,22 @@ class _HomeScreenState extends State<HomeScreen> {
                       const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
                   child: const Text(
                     'Capturar Inventario',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                 MaterialButton(
+                  minWidth: double.infinity,
+                  onPressed: () =>
+                      Navigator.pushNamed(context, PrinterScreen.routeName),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  disabledColor: Colors.grey[500],
+                  elevation: 5,
+                  color: Colors.purple,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
+                  child: const Text(
+                    'Módulo de impresoras',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
